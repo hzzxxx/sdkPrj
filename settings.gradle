@@ -1,0 +1,6 @@
+include ':im_library'
+include ':google_billing'
+include ':baselib'
+include ':sdklib'
+include ':app'
+rootProject.name = "WorkProject"

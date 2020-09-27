@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.versions["compileSdkVersion"]
+    buildToolsVersion rootProject.versions["buildToolsVersion"]
+
+    defaultConfig {
+        applicationId "com.dating.seekingarrangementshookupapp"
+        minSdkVersion rootProject.versions["minSdkVersion"]
+        targetSdkVersion rootProject.versions["targetSdkVersion"]
+        versionCode rootProject.versions["versionCode"]
+        versionName rootProject.versions["versionName"]
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation androidx.values()
+
+    implementation rootProject.im.values()
+
+    api project(path: ':baselib')
+
+    implementation project(path: ':im_library')
+}
